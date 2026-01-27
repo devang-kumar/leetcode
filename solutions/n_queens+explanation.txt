@@ -1,0 +1,27 @@
+This C++ code solves the classic N-Queens problem, which involves placing N queens on an N×N chessboard such that no two queens threaten each other. The solution uses a backtracking approach to explore all possible valid configurations.
+
+1. Approach/Algorithm used:
+The solution uses backtracking with pruning. It tries to place queens row by row, checking at each step whether a position is safe (no conflicts with previously placed queens). If a safe position is found, it proceeds to the next row; otherwise, it backtracks and tries alternative positions.
+
+2. Time Complexity: O(N!)
+The time complexity is O(N!) because in the worst case, we might need to explore all possible permutations of queen placements. For each row, we have up to N choices, and this branches out for all N rows.
+
+3. Space Complexity: O(N^2)
+The space complexity is O(N^2) because we store the board configuration (N×N matrix) and the recursion stack depth is O(N). The colUsed vector is O(N), which is dominated by the board storage.
+
+4. Key insights or techniques used:
+- Backtracking: The algorithm systematically tries all possible positions and abandons a path as soon as it determines it cannot lead to a valid solution.
+- Pruning: The isSafe function checks diagonal conflicts by looking at the upper-left and upper-right diagonals from the current position, which helps eliminate invalid paths early.
+- Column tracking: The colUsed vector keeps track of occupied columns to avoid checking the same column multiple times, improving efficiency.
+- Recursive exploration: The solve function recursively explores each row, trying all valid columns before backtracking.
+
+5. Brief walkthrough of how the solution works:
+- The solveNQueens function initializes the board (filled with '.') and a colUsed vector (all false), then starts the recursive solving process from row 0.
+- The solve function handles the recursive placement:
+  - Base case: If row == n, we've successfully placed all queens, so we add the current board configuration to the answer.
+  - For each column in the current row, it checks if the column is unused and the position is safe (no diagonal conflicts).
+  - If safe, it places a queen ('Q'), marks the column as used, and recursively calls solve for the next row.
+  - After the recursive call returns, it backtracks by removing the queen and unmarking the column.
+- The isSafe function checks the two diagonals (upper-left and upper-right) from the current position to ensure no other queens are present in those directions.
+
+This approach efficiently explores all possible valid configurations while pruning invalid paths early, making it suitable for moderate values of N (though it becomes computationally expensive for large N due to the factorial time complexity).
