@@ -1,0 +1,30 @@
+Here's a clear explanation of the provided C++ solution for the "Maximum Number of Coins You Can Get" problem:
+
+1. Approach/Algorithm used:
+The solution uses a greedy algorithm approach combined with sorting. The key idea is that to maximize the coins you can get, you should always pick the second largest remaining pile after sorting. This is because the largest pile will be taken by your friend, the second largest by you, and the smallest will be discarded.
+
+2. Time Complexity: O(n log n)
+The dominant operation is sorting the array, which takes O(n log n) time for an array of size n. The subsequent while loop runs in O(n) time, but this is overshadowed by the sorting step.
+
+3. Space Complexity: O(1)
+The algorithm uses a constant amount of extra space (just a few variables) regardless of the input size. The sorting is done in-place on the input array.
+
+4. Key insights or techniques used:
+- Sorting the array allows us to easily access the largest remaining elements
+- The greedy approach of always taking the second largest available pile
+- Using two pointers (left and right) to efficiently traverse the sorted array
+- The pattern of moving the right pointer by 2 (to skip the largest pile taken by friend) and left pointer by 1 (to skip the smallest pile)
+
+5. Brief walkthrough of how the solution works:
+- First, the array is sorted in ascending order
+- We initialize two pointers: left at the start (0) and right at the end (size-1)
+- In each iteration of the loop:
+  - We take the pile at right-1 (second largest remaining)
+  - We move the right pointer left by 2 (skipping the largest pile that friend takes)
+  - We move the left pointer right by 1 (skipping the smallest pile that's discarded)
+- The loop continues until left and right pointers meet
+- The sum of all taken piles (right-1 positions) is returned as the result
+
+For example, with input [2,4,1,2,7,8]:
+After sorting: [1,2,2,4,7,8]
+The taken piles would be 7 (from [1,2,2,4,7,8]), then 2 (from [1,2,4]), totaling 9 coins.
