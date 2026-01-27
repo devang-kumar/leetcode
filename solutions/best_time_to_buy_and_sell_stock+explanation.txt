@@ -1,0 +1,27 @@
+Here's a clear explanation of the provided C++ solution for the "Best Time to Buy and Sell Stock" problem:
+
+1. Approach/Algorithm used:
+The solution uses a single-pass greedy algorithm. It keeps track of the minimum price encountered so far and calculates the potential profit if sold at the current price. The goal is to find the maximum profit possible from a single buy-sell transaction.
+
+2. Time Complexity: O(n)
+The algorithm makes a single pass through the prices array, performing constant-time operations for each element. Here, n is the number of days (length of the prices array).
+
+3. Space Complexity: O(1)
+The solution uses only a constant amount of extra space (minPrice and maxProfit variables), regardless of the input size.
+
+4. Key insights or techniques used:
+- Greedy approach: Always trying to maximize profit by considering each day's price
+- Tracking minimum price: Continuously updating the lowest price seen so far
+- Single pass: Efficiently computing the solution in one iteration
+- Early termination: Returns 0 immediately if there's only one day (no possible transaction)
+
+5. Brief walkthrough of how the solution works:
+- First checks if there are fewer than 2 days (returns 0 if true)
+- Initializes minPrice with the first day's price and maxProfit as 0
+- Iterates through prices starting from the second day:
+  - Calculates potential profit if sold on current day (current price - minPrice)
+  - Updates maxProfit if this profit is greater than current maxProfit
+  - Updates minPrice if current price is lower than the known minimum
+- Returns the maximum profit found
+
+The solution efficiently finds the best single buy-sell transaction by always knowing the lowest price seen so far and calculating what the profit would be if sold at each subsequent price. This ensures we never miss the optimal buying and selling points.
