@@ -1,0 +1,24 @@
+Here's a clear explanation of the provided C++ solution for the "Remove Nth Node From End of List" problem:
+
+1. Approach/Algorithm used:
+The solution uses a two-pass approach. First, it traverses the entire linked list to count the total number of nodes (size). Then, it calculates the position of the node to be removed from the start (size - n) and traverses again to reach the node just before the target node. Finally, it removes the target node by adjusting the next pointer.
+
+2. Time Complexity: O(n)
+The algorithm makes two complete passes through the list: one to count the nodes and another to reach the target node. Since each pass is O(n) where n is the number of nodes, the total time complexity is O(n).
+
+3. Space Complexity: O(1)
+The solution only uses a constant amount of extra space (a few pointers and an integer counter), regardless of the input size.
+
+4. Key insights or techniques used:
+- The key insight is that removing the nth node from the end is equivalent to removing the (size - n)th node from the beginning.
+- Special handling is needed when the node to be removed is the head of the list (when size - n == 0).
+- The solution uses simple pointer manipulation to bypass the target node.
+
+5. Brief walkthrough of how the solution works:
+1. First, we traverse the entire list with a pointer 'trav' to count the total number of nodes (stored in 'size').
+2. We check if the node to remove is the head (when size - n == 0). If so, we simply return head->next.
+3. Otherwise, we traverse again from the head, moving (size - n - 1) steps to reach the node just before the target node.
+4. We then adjust the next pointer of this node to skip the target node, effectively removing it from the list.
+5. Finally, we return the original head of the list (which remains unchanged unless we removed the head node).
+
+This approach is straightforward but requires two full traversals of the list. A more optimized approach could use two pointers with a gap of n nodes between them to achieve the same result in a single pass.
